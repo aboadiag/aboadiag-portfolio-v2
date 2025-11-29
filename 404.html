@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // Since this is a User Page (aboadiag.github.io), the base path is the root "/".
+      // We capture the requested path and redirect to index.html with the path in the query string.
+      // This allows the SPA (React Router) to read the intended route.
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+
+      // The destination is index.html, with the original full path/search/hash attached.
+      // We add a ?404=true flag to prevent an infinite loop, which the router should ignore.
+      var newUrl = '/index.html?p=' + encodeURIComponent(path + search + hash) + '&404=true';
+
+      window.location.replace(newUrl);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to the correct page...</p>
+  </body>
+</html>
